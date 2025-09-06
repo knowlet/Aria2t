@@ -133,6 +133,11 @@ td {
     z-index: 1010;
 }
 
+/* ensure header overlays sidebar on iOS small screens */
+.main-header {
+    z-index: 1020;
+}
+
 .main-sidebar .sidebar-menu > li.treeview > ul.treeview-menu > li > a {
     padding: 6px 5px 6px 41px;
 }
@@ -154,7 +159,7 @@ td {
 }
 
 .content-wrapper {
-    min-height: calc(100vh - 48px);
+    min-height: calc(100vh - 48px - env(safe-area-inset-bottom, 0px));
 }
 
 .content-wrapper, .right-side {
@@ -162,12 +167,51 @@ td {
 }
 
 .content-wrapper > .content-body {
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 @media screen and (orientation: portrait) {
     .main-footer {
         padding-bottom: calc(15px + env(safe-area-inset-bottom));
+    }
+}
+
+/* Bottom safe area */
+@supports (padding-bottom: max(0px, env(safe-area-inset-bottom))) {
+    .main-footer {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    /* Extend sidebar down into bottom safe area to avoid visible gap */
+    .main-sidebar {
+        padding-bottom: max(0px, env(safe-area-inset-bottom));
+        margin-bottom: calc(-1 * env(safe-area-inset-bottom));
+    }
+
+    /* Override AdminLTE's height:100% with min-height to fill viewport */
+    html, body {
+        height: 100vh !important;
+        min-height: 100vh !important;
+    }
+
+    .wrapper {
+        height: 100vh !important;
+        min-height: 100vh !important;
+    }
+
+    /* Make content wrapper fill remaining space and push footer down */
+    .content-wrapper {
+        min-height: calc(100vh - 50px - env(safe-area-inset-top, 0px) - 48px) !important;
+        padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+    
+    /* Stick footer to bottom */
+    .main-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1030;
     }
 }
 
@@ -192,6 +236,14 @@ td {
 
 .main-footer > .navbar > .navbar-toolbar > .nav > li:first-child > a {
     padding-left: 0;
+}
+
+/* Compact footer padding on small screens to avoid extra whitespace */
+@media (max-width: 767px) {
+    .main-footer {
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
 }
 
 .dropdown-menu.right-align {
@@ -232,6 +284,20 @@ td {
     .main-footer > .navbar > .navbar-toolbar > .nav > li > a {
         padding-left: 8px;
         padding-right: 8px;
+    }
+}
+
+/* iOS safe-area support (Dynamic Island / notch) */
+@supports (padding-top: max(0px, env(safe-area-inset-top))) {
+    /* Extend header upward into the safe area without pushing layout down */
+    .main-header {
+        padding-top: max(0px, env(safe-area-inset-top));
+        margin-top: calc(-1 * env(safe-area-inset-top));
+    }
+
+    :root {
+        --safe-area-inset-top: env(safe-area-inset-top);
+        --safe-area-inset-bottom: env(safe-area-inset-bottom);
     }
 }
 

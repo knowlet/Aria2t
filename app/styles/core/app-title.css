@@ -29,6 +29,14 @@
     padding-top: 74px;
 }
 
+/* Add safe-area at the top for custom title layout on iOS */
+@supports (padding-top: max(0px, env(safe-area-inset-top))) {
+    .custom-app-title .main-header {
+        padding-top: max(0px, env(safe-area-inset-top));
+        margin-top: calc(-1 * env(safe-area-inset-top));
+    }
+}
+
 .custom-app-title .main-header {
     -webkit-app-region: drag;
 }

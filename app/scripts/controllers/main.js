@@ -443,6 +443,10 @@
             }
         };
 
+        $scope.goNew = function () {
+            $location.path('/new');
+        };
+
         $scope.openProjectLink = function () {
             ariaNgNativeElectronService.openProjectLink();
         };

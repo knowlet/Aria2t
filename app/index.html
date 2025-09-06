@@ -8,16 +8,16 @@
     <meta name="description" content="AriaNg, a modern web frontend making aria2 easier to use.">
     <meta name="format-detection" content="telephone=no"/>
     <title>AriaNg Native</title>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="../node_modules/admin-lte/dist/css/AdminLTE.min.css"/>
-    <link rel="stylesheet" href="../node_modules/sweetalert/dist/sweetalert.css"/>
-    <link rel="stylesheet" href="../node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css"/>
-    <link rel="stylesheet" href="../node_modules/angular/angular-csp.css"/>
-    <link rel="stylesheet" href="../node_modules/angular-ui-notification/dist/angular-ui-notification.min.css"/>
-    <link rel="stylesheet" href="../node_modules/angular-busy/dist/angular-busy.min.css"/>
-    <link rel="stylesheet" href="../node_modules/angular-input-dropdown/inputDropdownStyles.css"/>
-    <link rel="stylesheet" href="../node_modules/angularjs-dragula/dist/dragula.min.css"/>
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="vendor/admin-lte/css/AdminLTE.min.css"/>
+    <link rel="stylesheet" href="vendor/sweetalert/sweetalert.css"/>
+    <link rel="stylesheet" href="vendor/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css"/>
+    <link rel="stylesheet" href="vendor/angular/angular-csp.css"/>
+    <link rel="stylesheet" href="vendor/angular-ui-notification/angular-ui-notification.min.css"/>
+    <link rel="stylesheet" href="vendor/angular-busy/angular-busy.min.css"/>
+    <link rel="stylesheet" href="vendor/angular-input-dropdown/inputDropdownStyles.css"/>
+    <link rel="stylesheet" href="vendor/dragula/dragula.min.css"/>
     <link rel="stylesheet" href="styles/core/core.css">
     <link rel="stylesheet" href="styles/core/extend.css">
     <link rel="stylesheet" href="styles/core/native-core.css">
@@ -90,8 +90,14 @@
             <div class="navbar-app-title pull-right"></div>
             <div class="navbar-toolbar">
                 <ul class="nav navbar-nav">
+                    <li class="visible-xs-inline-block">
+                        <a data-toggle="push-menu" role="button" title="{{'Toggle Navigation' | translate}}">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </li>
+                    <li class="divider visible-xs-inline-block"></li>
                     <li>
-                        <a class="toolbar" title="{{'New' | translate}}" ng-href="#!/new">
+                        <a class="toolbar" title="{{'New' | translate}}" ng-click="goNew()">
                             <i class="fa fa-plus"></i>
                             <span translate>New</span>
                         </a>
@@ -334,37 +340,37 @@
         delete window.module;
     }
 </script>
-<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="../node_modules/angular/angular.min.js"></script>
-<script src="../node_modules/angular-route/angular-route.min.js"></script>
-<script src="../node_modules/angular-sanitize/angular-sanitize.min.js"></script>
-<script src="../node_modules/angular-touch/angular-touch.min.js"></script>
-<script src="../node_modules/angular-messages/angular-messages.min.js"></script>
-<script src="../node_modules/angular-cookies/angular-cookies.min.js"></script>
-<script src="../node_modules/angular-animate/angular-animate.min.js"></script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../node_modules/moment/min/moment.min.js"></script>
-<script src="../node_modules/moment/locale/zh-cn.js"></script>
-<script src="../node_modules/moment/locale/zh-tw.js"></script>
-<script src="../node_modules/echarts/dist/echarts.common.min.js"></script>
-<script src="../node_modules/admin-lte/dist/js/adminlte.js"></script>
-<script src="../node_modules/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
-<script src="../node_modules/bootstrap-contextmenu/bootstrap-contextmenu.js"></script>
-<script src="../node_modules/natural-compare/index.js"></script>
-<script src="../node_modules/angular-translate/dist/angular-translate.min.js"></script>
-<script src="../node_modules/angular-moment/angular-moment.min.js"></script>
-<script src="../node_modules/angular-websocket/dist/angular-websocket.min.js"></script>
-<script src="../node_modules/angular-utf8-base64/angular-utf8-base64.js"></script>
-<script src="../node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
-<script src="../node_modules/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
-<script src="../node_modules/angular-bittorrent-peerid/angular-bittorrent-peerid.min.js"></script>
-<script src="../node_modules/angular-busy/dist/angular-busy.min.js"></script>
-<script src="../node_modules/angular-promise-buttons/dist/angular-promise-buttons.min.js"></script>
-<script src="../node_modules/angular-clipboard/angular-clipboard.js"></script>
-<script src="../node_modules/angular-input-dropdown/inputDropdown.js"></script>
-<script src="../node_modules/angularjs-dragula/dist/angularjs-dragula.min.js"></script>
-<script src="../node_modules/angular-sweetalert/SweetAlert.js"></script>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/angular/angular.min.js"></script>
+<script src="vendor/angular/angular-route.min.js"></script>
+<script src="vendor/angular/angular-sanitize.min.js"></script>
+<script src="vendor/angular/angular-touch.min.js"></script>
+<script src="vendor/angular/angular-messages.min.js"></script>
+<script src="vendor/angular/angular-cookies.min.js"></script>
+<script src="vendor/angular/angular-animate.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/moment/moment.min.js"></script>
+<script src="vendor/moment/locale/zh-cn.js"></script>
+<script src="vendor/moment/locale/zh-tw.js"></script>
+<script src="vendor/echarts/echarts.common.min.js"></script>
+<script src="vendor/admin-lte/adminlte.js"></script>
+<script src="vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="vendor/sweetalert/sweetalert.min.js"></script>
+<script src="vendor/bootstrap-contextmenu/bootstrap-contextmenu.js"></script>
+<script src="vendor/natural-compare/index.js"></script>
+<script src="vendor/angular-translate/angular-translate.min.js"></script>
+<script src="vendor/angular-moment/angular-moment.min.js"></script>
+<script src="vendor/angular-websocket/angular-websocket.min.js"></script>
+<script src="vendor/angular-utf8-base64/angular-utf8-base64.js"></script>
+<script src="vendor/angular-local-storage/angular-local-storage.min.js"></script>
+<script src="vendor/angular-ui-notification/angular-ui-notification.min.js"></script>
+<script src="vendor/angular-bittorrent-peerid/angular-bittorrent-peerid.min.js"></script>
+<script src="vendor/angular-busy/angular-busy.min.js"></script>
+<script src="vendor/angular-promise-buttons/angular-promise-buttons.min.js"></script>
+<script src="vendor/angular-clipboard/angular-clipboard.js"></script>
+<script src="vendor/angular-input-dropdown/inputDropdown.js"></script>
+<script src="vendor/dragula/angularjs-dragula.min.js"></script>
+<script src="vendor/angular-sweetalert/SweetAlert.js"></script>
 <script src="scripts/core/__core.js"></script>
 <script src="scripts/core/__fix.js"></script>
 <script src="scripts/core/app.js"></script>
